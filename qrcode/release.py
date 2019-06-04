@@ -31,7 +31,9 @@ def update_manpage(data):
             # Update version
             parts[3] = data['new_version']
             # Update date
-            parts[1] = datetime.datetime.now().strftime('%-d %b %Y')
+            parts[1] = datetime.datetime.now().strftime('%d %b %Y')
+            if parts[1].startswith('0'):
+                parts[1] = parts[1][1:]
             lines[i] = '"'.join(parts)
         break
 

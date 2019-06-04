@@ -13,6 +13,11 @@ from qrcode.release import update_manpage
 OPEN = '{}.open'.format(six.moves.builtins.__name__)
 DATA = 'test\n.TH "date" "version" "description"\nthis'
 
+def now():
+    s = datetime.datetime.now().strftime('%d %b %Y')
+    if s.startswith('0'):
+        s = s[1:]
+    return s
 
 @unittest.skipIf(
     sys.version_info[0] == 3 and sys.version_info[1] < 6,
@@ -41,5 +46,5 @@ class UpdateManpageTests(unittest.TestCase):
         update_manpage({'name': 'qrcode', 'new_version': '3.11'})
         expected = re.split(r'([^\n]*(?:\n|$))', DATA)[1::2]
         expected[1] = expected[1].replace('version', '3.11').replace(
-            'date', datetime.datetime.now().strftime('%-d %b %Y'))
+            'date', now())
         mock_file().write.has_calls([mock.call(line) for line in expected])
