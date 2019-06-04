@@ -19,12 +19,12 @@ from qrcode.tests.svg import SvgImageWhite
 
 try:
     import unittest2 as unittest
-except ImportError:
+except ImportError:  # pragma: no cover
     import unittest
 
 try:
     from unittest import mock
-except ImportError:
+except ImportError:  # pragma: no cover
     import mock
 
 UNICODE_TEXT = u'\u03b1\u03b2\u03b3'

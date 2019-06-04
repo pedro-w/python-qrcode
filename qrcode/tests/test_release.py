@@ -4,7 +4,7 @@ import datetime
 import unittest
 try:
     from unittest import mock
-except ImportError:
+except ImportError:  # pragma: no cover
     import mock
 
 import six

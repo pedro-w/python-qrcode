@@ -1,11 +1,11 @@
 import sys
 try:
     import unittest2 as unittest
-except ImportError:
+except ImportError:  # pragma: no cover
     import unittest
 try:
     from unittest import mock
-except ImportError:
+except ImportError:  # pragma: no cover
     import mock
 
 from qrcode.console_scripts import main
